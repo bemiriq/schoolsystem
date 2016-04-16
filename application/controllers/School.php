@@ -52,7 +52,7 @@ class School extends CI_Controller {
 		
 	}
 
-	 function check_database($password)
+	 	 function check_database($password)
 	 {
 	    
 	   $username = $this->input->post('username');
@@ -61,8 +61,25 @@ class School extends CI_Controller {
 
 	   if($result)
 	   {
-	     
-	     // $this->studentdashboard();
+	     // print_r($result);
+	 		foreach ($result as $result ) {
+	 			$ucat = $result->user_category;
+	 			if($ucat == 'Student' ){
+	 				// echo 'Student';
+	 				redirect("school/studentDashboard");
+
+	 			}
+	 			elseif($ucat == 'Admin'){
+	 				// echo 'Admin';
+	 				redirect("school/adminDashboard");	
+	 			}
+	 			elseif($ucat == 'Teacher'){
+	 				// echo 'Teacher';
+	 				redirect("school/teacherDashboard");	
+	 			}
+
+	 		}
+	    	
 	     
 	   }
 	   else
@@ -73,14 +90,60 @@ class School extends CI_Controller {
 	 }
 
 
-	public function studentdashboard()
+	public function studentDashboard()
 	{
-		echo 'student';
+		$this->load->view("student/studentDashboard");
+		$this->studentHeader();
+		$this->studentFooter();
 	}
 
-	public function teacherdashboard()
+	public function studentHeader()
 	{
-		echo 'teacher';
+		$this->load->view("student/studentHeader");
 	}
 
+	public function studentFooter()
+	{
+		$this->load->view("student/studentFooter");
+	}
+
+	public function teacherDashboard()
+	{
+		$this->load->view("teacher/teacherDashboard");
+		$this->teacherHeader();
+		$this->teacherFooter();
+	}
+
+	public function teacherHeader()
+	{
+		$this->load->view("teacher/teacherHeader");
+	}
+
+	public function teacherFooter()
+	{
+		$this->load->view("teacher/teacherFooter");
+	}
+
+	public function adminDashboard()
+	{
+		$this->load->view("admin/adminDashboard");
+		$this->adminHeader();
+		$this->adminFooter();
+	}
+
+	public function adminHeader()
+	{
+		$this->load->view("admin/adminHeader");
+	}
+
+	public function adminFooter()
+	{
+		$this->load->view("admin/adminFooter");
+	}
+
+	public function logout()
+	{
+	 	$this->index();
+	 	$this->load->library('session');	
+	}
 }
