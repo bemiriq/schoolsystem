@@ -9,7 +9,7 @@ class School extends CI_Controller {
 	   //echo "FOUND MODEL";
 	   $this->load->library('session');
 	   $this->load->model('loginModel','',TRUE);
-	   // $this->load->model('registerModel','postregister');
+	   $this->load->model('registerModel','postregister');
 	   // $this->load->model('issueModel','postissue');
 	   // $this->load->model('employeeModel','postemployee');
 	 }
@@ -140,6 +140,21 @@ class School extends CI_Controller {
 	{
 		$this->load->view("admin/adminFooter");
 	}
+
+	public function register()
+	 {
+	 	if(@$_POST['create_user'])
+		{
+			$data = $_POST['post'];
+			$data['date_posted'] = date('Y-m-d H:i:s');
+			$this->postregister->add($data);
+			$this->session->set_flashdata('message',"User created successfully");
+			$this->load->view("register");
+		}
+		else{
+			$this->load->view("register");
+		}
+	 }
 
 	public function logout()
 	{
