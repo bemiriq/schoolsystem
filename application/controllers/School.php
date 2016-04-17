@@ -10,7 +10,8 @@ class School extends CI_Controller {
 	   $this->load->library('session');
 	   $this->load->model('loginModel','',TRUE);
 	   $this->load->model('registerModel','postregister');
-	   // $this->load->model('issueModel','postissue');
+	   $this->load->model('feeModel','postfee');
+	   // $this->load->model('issueModel','postfee');
 	   // $this->load->model('employeeModel','postemployee');
 	 }
 
@@ -155,6 +156,83 @@ class School extends CI_Controller {
 			$this->load->view("register");
 		}
 	 }
+
+	 public function addFee()
+	 {
+
+	 	if(@$_POST['add_fee'])
+		{
+			$data = $_POST['post'];
+			$data['date_posted'] = date('Y-m-d H:i:s');
+			$this->postfee->add($data);
+			$this->session->set_flashdata('message',"Fee added successfully");
+			$this->adminHeader();
+			$this->load->view("admin/addFee");
+			$this->adminFooter();
+		}
+
+		else{
+			$this->adminHeader();
+			$this->load->view("admin/addFee");
+			$this->adminFooter();
+		}
+	 }
+
+	 	 public function viewFee()
+	{
+		$this->adminHeader();
+		$this->adminFooter();
+		$data['posts']=$this->postfee->getAll();
+		$this->load->view('admin/viewFee',$data);
+	}
+
+		public function studentViewFee()
+	{
+		$this->studentHeader();
+		$this->studentFooter();
+		$data['posts']=$this->postfee->getAll();
+		$this->load->view('student/viewFee',$data);
+	}
+
+		public function editFee()
+	{
+		$id = $this->uri->segment(3);
+		$post = $this->postfee->getById($id);
+		if(!$post)
+		{
+			// echo '1';
+			redirect("school/viewFee");
+		}
+
+		if(@$_POST['update_fee'])
+		{
+			$data = $_POST['post'];
+			$this->postfee->update($data,$id);
+			$data['fichas_info'] = $this->postfee->get_fichas();
+			$this->session->set_flashdata('message',"Fee updated successfully");
+			redirect("school/editFee");
+			// echo '2';
+
+			$this->adminHeader();
+			$this->adminFooter();
+			redirect("school/editFee");
+		}
+
+		// echo '3';
+		$this->adminHeader();
+		$this->adminFooter();
+		$data['post'] = $post;
+		$data['fichas_info'] = $this->postfee->get_fichas();
+		$this->load->view('admin/editFee',$data);
+	}
+
+		public function deleteFee()
+	{
+		$id = $this->uri->segment(3);
+		$this->postfee->delete($id);
+		$this->session->set_flashdata('message',"Fee deleted successfully");
+		redirect("school/viewFee");
+	}
 
 	public function logout()
 	{
