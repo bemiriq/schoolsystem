@@ -119,6 +119,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Course Management <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse1">
+                            <li>
+                                <a href="<?=site_url('school/addCourse')?>">Add Course</a>
+                            </li>
+                            <li>
+                                <a href="<?=site_url('school/viewCourse')?>">Update & Delete</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Transportation Management <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse2">
+                            <li>
+                                <a href="<?=site_url('school/addTrans')?>">Add Transportation</a>
+                            </li>
+                            <li>
+                                <a href="<?=site_url('school/viewTrans')?>">Update & Delete</a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- <li>
                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>

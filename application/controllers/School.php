@@ -11,6 +11,9 @@ class School extends CI_Controller {
 	   $this->load->model('loginModel','',TRUE);
 	   $this->load->model('registerModel','postregister');
 	   $this->load->model('feeModel','postfee');
+	   $this->load->model('courseModel','postcourse');
+	   $this->load->model('transModel','posttrans');
+	   $this->load->model('hostelModel','posthostel');
 	   // $this->load->model('issueModel','postfee');
 	   // $this->load->model('employeeModel','postemployee');
 	 }
@@ -178,12 +181,100 @@ class School extends CI_Controller {
 		}
 	 }
 
-	 	 public function viewFee()
+	 public function addCourse()
+	 {
+
+	 	if(@$_POST['add_course'])
+		{
+			$data = $_POST['post'];
+			$data['date_posted'] = date('Y-m-d H:i:s');
+			$this->postcourse->add($data);
+			$this->session->set_flashdata('message',"Course added successfully");
+			$this->adminHeader();
+			$this->load->view("admin/addCourse");
+			$this->adminFooter();
+		}
+
+		else{
+			$this->adminHeader();
+			$this->load->view("admin/addCourse");
+			$this->adminFooter();
+		}
+	 }
+
+
+	  public function addTrans()
+	 {
+
+	 	if(@$_POST['add_trans'])
+		{
+			$data = $_POST['post'];
+			$data['date_posted'] = date('Y-m-d H:i:s');
+			$this->posttrans->add($data);
+			$this->session->set_flashdata('message',"Transportation added successfully");
+			$this->adminHeader();
+			$this->load->view("admin/addTrans");
+			$this->adminFooter();
+		}
+
+		else{
+			$this->adminHeader();
+			$this->load->view("admin/addTrans");
+			$this->adminFooter();
+		}
+	 }
+
+	  public function addHostel()
+	 {
+
+	 	if(@$_POST['add_hostel'])
+		{
+			$data = $_POST['post'];
+			$data['date_posted'] = date('Y-m-d H:i:s');
+			$this->posthostel->add($data);
+			$this->session->set_flashdata('message',"Hostel added successfully");
+			$this->adminHeader();
+			$this->load->view("admin/addHostel");
+			$this->adminFooter();
+		}
+
+		else{
+			$this->adminHeader();
+			$this->load->view("admin/addHostel");
+			$this->adminFooter();
+		}
+	 }
+
+	 public function viewFee()
 	{
 		$this->adminHeader();
 		$this->adminFooter();
 		$data['posts']=$this->postfee->getAll();
 		$this->load->view('admin/viewFee',$data);
+	}
+
+	 public function viewCourse()
+	{
+		$this->adminHeader();
+		$this->adminFooter();
+		$data['posts']=$this->postcourse->getAll();
+		$this->load->view('admin/viewCourse',$data);
+	}
+
+	public function viewTrans()
+	{
+		$this->adminHeader();
+		$this->adminFooter();
+		$data['posts']=$this->posttrans->getAll();
+		$this->load->view('admin/viewTrans',$data);
+	}
+
+	public function viewHostel()
+	{
+		$this->adminHeader();
+		$this->adminFooter();
+		$data['posts']=$this->posthostel->getAll();
+		$this->load->view('admin/viewHostel',$data);
 	}
 
 		public function studentViewFee()
@@ -226,6 +317,104 @@ class School extends CI_Controller {
 		$this->load->view('admin/editFee',$data);
 	}
 
+
+	public function editCourse()
+	{
+		$id = $this->uri->segment(3);
+		$post = $this->postcourse->getById($id);
+		if(!$post)
+		{
+			// echo '1';
+			redirect("school/viewCourse");
+		}
+
+		if(@$_POST['update_course'])
+		{
+			$data = $_POST['post'];
+			$this->postcourse->update($data,$id);
+			$data['fichas_info'] = $this->postcourse->get_fichas();
+			$this->session->set_flashdata('message',"Course updated successfully");
+			redirect("school/editCourse");
+			// echo '2';
+
+			$this->adminHeader();
+			$this->adminFooter();
+			redirect("school/editCourse");
+		}
+
+		// echo '3';
+		$this->adminHeader();
+		$this->adminFooter();
+		$data['post'] = $post;
+		$data['fichas_info'] = $this->postcourse->get_fichas();
+		$this->load->view('admin/editCourse',$data);
+	}
+
+	public function editTrans()
+	{
+		$id = $this->uri->segment(3);
+		$post = $this->posttrans->getById($id);
+		if(!$post)
+		{
+			// echo '1';
+			redirect("school/viewTrans");
+		}
+
+		if(@$_POST['update_trans'])
+		{
+			$data = $_POST['post'];
+			$this->posttrans->update($data,$id);
+			$data['fichas_info'] = $this->posttrans->get_fichas();
+			$this->session->set_flashdata('message',"Transportation updated successfully");
+			redirect("school/editTrans");
+			// echo '2';
+
+			$this->adminHeader();
+			$this->adminFooter();
+			redirect("school/editTrans");
+		}
+
+		// echo '3';
+		$this->adminHeader();
+		$this->adminFooter();
+		$data['post'] = $post;
+		$data['fichas_info'] = $this->posttrans->get_fichas();
+		$this->load->view('admin/editTrans',$data);
+	}
+
+	public function editHostel()
+	{
+		$id = $this->uri->segment(3);
+		$post = $this->posthostel->getById($id);
+		if(!$post)
+		{
+			// echo '1';
+			redirect("school/viewHostel");
+		}
+
+		if(@$_POST['update_Hostel'])
+		{
+			$data = $_POST['post'];
+			$this->posthostel->update($data,$id);
+			$data['fichas_info'] = $this->posthostel->get_fichas();
+			$this->session->set_flashdata('message',"Hostel updated successfully");
+			redirect("school/editHostel");
+			// echo '2';
+
+			$this->adminHeader();
+			$this->adminFooter();
+			redirect("school/editHostel");
+		}
+
+		// echo '3';
+		$this->adminHeader();
+		$this->adminFooter();
+		$data['post'] = $post;
+		$data['fichas_info'] = $this->posthostel->get_fichas();
+		$this->load->view('admin/editHostel',$data);
+	}
+
+
 		public function deleteFee()
 	{
 		$id = $this->uri->segment(3);
@@ -233,6 +422,31 @@ class School extends CI_Controller {
 		$this->session->set_flashdata('message',"Fee deleted successfully");
 		redirect("school/viewFee");
 	}
+
+		public function deleteCourse()
+	{
+		$id = $this->uri->segment(3);
+		$this->postcourse->delete($id);
+		$this->session->set_flashdata('message',"Course deleted successfully");
+		redirect("school/viewCourse");
+	}
+
+		public function deleteTrans()
+	{
+		$id = $this->uri->segment(3);
+		$this->posttrans->delete($id);
+		$this->session->set_flashdata('message',"Transportation deleted successfully");
+		redirect("school/viewTrans");
+	}
+
+		public function deleteHostel()
+	{
+		$id = $this->uri->segment(3);
+		$this->posthostel->delete($id);
+		$this->session->set_flashdata('message',"Hostel location deleted successfully");
+		redirect("school/viewHostel");
+	}
+
 
 	public function logout()
 	{
