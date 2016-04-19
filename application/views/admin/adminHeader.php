@@ -142,6 +142,18 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Hostel Management <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse3">
+                            <li>
+                                <a href="<?=site_url('school/addHostel')?>">Add Hostel</a>
+                            </li>
+                            <li>
+                                <a href="<?=site_url('school/viewHostel')?>">Update & Delete</a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- <li>
                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>

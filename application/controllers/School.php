@@ -392,7 +392,7 @@ class School extends CI_Controller {
 			redirect("school/viewHostel");
 		}
 
-		if(@$_POST['update_Hostel'])
+		if(@$_POST['update_hostel'])
 		{
 			$data = $_POST['post'];
 			$this->posthostel->update($data,$id);
@@ -443,7 +443,7 @@ class School extends CI_Controller {
 	{
 		$id = $this->uri->segment(3);
 		$this->posthostel->delete($id);
-		$this->session->set_flashdata('message',"Hostel location deleted successfully");
+		$this->session->set_flashdata('message',"Hostel deleted successfully");
 		redirect("school/viewHostel");
 	}
 

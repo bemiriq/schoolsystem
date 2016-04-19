@@ -18,25 +18,31 @@
             <br>
             <div class="login-panel panel panel-default">
 
-                <div class="panel-heading">Add Hostel Location</div>
+                <div class="panel-heading">Add Hostel</div>
                 <div class="panel-body">
                     <form action="" method="post">
                         <fieldset>
                             <div class="form-group">
-                                <select class="form-control" name="post[year]">
-                                  <option>Class-XI</option>
-                                  <option>Class-XII</option>
+                                <select class="form-control" name="post[gender]">
+                                  <option>Boys</option>
+                                  <option>Girls</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select class="form-control" name="post[faculty]">
-                                  <option>Management</option>
-                                  <option>Science</option>
-                                </select>
+                                <label for="exampleInputName2">Capacity</label>
+                                <input class="form-control" placeholder="Enter Total Capacity" name="post[capacity]" type="text" autofocus="" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName2">Course Name</label>
-                                <input class="form-control" placeholder="Enter course name" name="post[course_name]" type="text" autofocus="">
+                                <label for="exampleInputName2">Main Location</label>
+                                <input class="form-control" placeholder="Enter Main Location" name="post[mlocation]" type="text" autofocus="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName2">City</label>
+                                <input class="form-control" placeholder="Enter City Name" name="post[city]" type="text" autofocus="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName2">Map Link</label>
+                                <input class="form-control" placeholder="Enter Direct Embeded Link" name="post[embededMap]" type="text" autofocus="" required>
                             </div>
                             <input class="btn btn-lg btn-primary btn-block" name="add_hostel" type="submit" value="Submit"/>
                             
