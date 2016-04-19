@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Student System</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url('public/css/bootstrap.min.css')?>" rel="stylesheet">
@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
+                <a class="navbar-brand" href="<?=site_url('school/studentDashboard')?>">Student</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -120,7 +120,16 @@
                         </ul>
                     </li> -->
                     <li>
-                        <a href="<?=site_url('school/studentViewFee')?>">Fee Detail</a><i class="fa fa-fw fa-file"></i></a>
+                        <a href="<?=site_url('school/studentViewCourse')?>">Course</a>
+                    </li>
+                    <li>
+                        <a href="<?=site_url('school/studentViewFee')?>">Fee</a>
+                    </li>
+                    <li>
+                        <a href="<?=site_url('school/studentViewTrans')?>">Tranportation</a>
+                    </li>
+                    <li>
+                        <a href="<?=site_url('school/studentViewHostel')?>">Hostel</a>
                     </li>
                     <!-- <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>

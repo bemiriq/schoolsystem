@@ -285,6 +285,62 @@ class School extends CI_Controller {
 		$this->load->view('student/viewFee',$data);
 	}
 
+		public function studentViewCourse()
+	{
+		$this->studentHeader();
+		$this->studentFooter();
+		$data['posts']=$this->postcourse->getAll();
+		$this->load->view('student/viewCourse',$data);
+	}
+
+		public function studentViewTrans()
+	{
+		$this->studentHeader();
+		$this->studentFooter();
+		$data['posts']=$this->posttrans->getAll();
+		$this->load->view('student/viewTrans',$data);
+	}
+
+		public function studentViewHostel()
+	{
+		$this->studentHeader();
+		$this->studentFooter();
+		$data['posts']=$this->posthostel->getAll();
+		$this->load->view('student/viewHostel',$data);
+	}
+
+		public function teacherViewFee()
+	{
+		$this->teacherHeader();
+		$this->teacherFooter();
+		$data['posts']=$this->postfee->getAll();
+		$this->load->view('teacher/viewFee',$data);
+	}
+
+		public function teacherViewCourse()
+	{
+		$this->teacherHeader();
+		$this->teacherFooter();
+		$data['posts']=$this->postcourse->getAll();
+		$this->load->view('teacher/viewCourse',$data);
+	}
+
+		public function teacherViewTrans()
+	{
+		$this->teacherHeader();
+		$this->teacherFooter();
+		$data['posts']=$this->posttrans->getAll();
+		$this->load->view('teacher/viewTrans',$data);
+	}
+
+		public function teacherViewHostel()
+	{
+		$this->teacherHeader();
+		$this->teacherFooter();
+		$data['posts']=$this->posthostel->getAll();
+		$this->load->view('teacher/viewHostel',$data);
+	}
+
 		public function editFee()
 	{
 		$id = $this->uri->segment(3);

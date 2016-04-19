@@ -120,8 +120,8 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Course Management <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse1">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i> Course Management <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo1" class="collapse">
                             <li>
                                 <a href="<?=site_url('school/addCourse')?>">Add Course</a>
                             </li>
@@ -132,8 +132,8 @@
                     </li>
 
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Transportation Management <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse2">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Transportation<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo2" class="collapse">
                             <li>
                                 <a href="<?=site_url('school/addTrans')?>">Add Transportation</a>
                             </li>
@@ -144,8 +144,8 @@
                     </li>
 
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Hostel Management <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse3">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Hostel Management <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo3" class="collapse">
                             <li>
                                 <a href="<?=site_url('school/addHostel')?>">Add Hostel</a>
                             </li>
