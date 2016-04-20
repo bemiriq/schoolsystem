@@ -131,6 +131,9 @@
                     <li>
                         <a href="<?=site_url('school/studentViewHostel')?>">Hostel</a>
                     </li>
+                    <li>
+                        <a href="<?=site_url('school/uploadDocument')?>">Upload Document</a>
+                    </li>
                     <!-- <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li> -->

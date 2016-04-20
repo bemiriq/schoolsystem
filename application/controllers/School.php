@@ -14,6 +14,7 @@ class School extends CI_Controller {
 	   $this->load->model('courseModel','postcourse');
 	   $this->load->model('transModel','posttrans');
 	   $this->load->model('hostelModel','posthostel');
+	   $this->load->model('main_m');
 	   // $this->load->model('issueModel','postfee');
 	   // $this->load->model('employeeModel','postemployee');
 	 }
@@ -503,6 +504,58 @@ class School extends CI_Controller {
 		redirect("school/viewHostel");
 	}
 
+	public function uploadDocument()
+	{
+		$this->studentHeader();
+		$this->studentFooter();
+		$this->load->view('student/uploadDocument');
+		// $data['posts']=$this->postcourse->getAll();
+		// $this->load->view('student/uploadDocument',$data);
+	}
+
+	public function information()
+	{
+		$this->adminHeader();
+		$this->adminFooter();
+		$this->load->view('admin/getInformation');
+	}
+
+	// public function save()
+	// {
+	// 	$url = $this->do_upload();
+	// 	$title = $_POST["title"];
+	// 	$this->main_m->save($title, $url);
+	// }
+
+	// private function do_upload()
+	// {
+	// 	$type = explode('.', $_FILES["pic"]["name"]);
+	// 	$type = $type[count{$type}=1];
+	// 	$url = "./images/".uniqid(rand()).'.'.$type;
+	// 	if(in_array(($type, array{"jpg","jpeg", "gif", "png"}))
+	// 	if(is_uploaded_file($_FILES["pic"]["tmp_name"]))
+	// 		if(move_uploaded_file($_FILES["pic"]["tmp_name"],$url));
+	// 			return $url;
+	// 	return "";
+	// }
+
+	// public function upload()
+	// {
+	// 	$config['upload_path'] = "./images/";
+	// 	$config["allowed_types"] = 'jpg|jpeg|gif|png';
+	// 	$this->load->library('upload',$config);
+
+	// 	if(!$this->upload->do_upload()){
+	// 		$error = array('error'=>$this->upload->display_errors());
+	// 		$this->load->view('main_view',$error);
+	// 	}
+	// 	else{
+	// 		$file_data = $this->upload->data();
+	// 		$data['img'] = base_url().'/images/'.$file_data['file_name'];
+	// 		echo 'Successfully Submitted';
+	// 	}
+	// 	}
+	// }
 
 	public function logout()
 	{
