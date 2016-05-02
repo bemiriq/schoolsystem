@@ -43,10 +43,10 @@
                     <form role="form" action="" method="post">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Enter your Username" name="username" type="text" autofocus="">
+                                <input class="form-control" placeholder="Enter your Username" name="username" type="text" autofocus="" required>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Enter Your Password" name="password" type="password">
+                                <input class="form-control" placeholder="Enter Your Password" name="password" type="password" required>
                             </div>
                             <div class="form-group">
                                     <a href="<?=site_url('school/register')?>" style="margin-left: 80%;">Register</a>    
